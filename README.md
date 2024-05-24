@@ -80,16 +80,15 @@ The eGain-KM-Search-Field-Widget boosts user experience by providing quick acces
 ## Features
   
 - The click of a button reveals a search tab, popular articles, and contact channels.
-    
-   ![image](https://github.com/eGainDev/V3-Km-Widget/assets/159126503/3345bb06-5f30-4297-9887-3274d0079612)
+    ![km-widget-popular-articles](https://github.com/eGain/egain-km-search-widget/assets/93939477/9c422aa3-7603-4565-acee-068d83c08bd5)
 
 - Real-time suggestions appear on the search tab after entering at least 2 characters. 
-  
-   ![image](https://github.com/eGainDev/V3-Km-Widget/assets/159126503/0bc5e5c5-5302-4449-9d29-569268e49d7e)
+  ![km-widget-realtime-suggestions](https://github.com/eGain/egain-km-search-widget/assets/93939477/90919b74-c370-4f4c-bb69-a2208af67e0e)
 
 - The article offers options for rating and feedback via a survey and sharing capabilities through link copying or email.
 
-  ![email and rating](https://github.com/eGainDev/V3-Km-Widget/assets/159126503/93f1bde7-1c51-48af-8f9f-b20d0db0ba44)
+  ![km-widget-article](https://github.com/eGain/egain-km-search-widget/assets/93939477/5f7fd0f8-c318-4883-9b27-63f4ca0f1b0c)
+
 
 ## L10N Support
 
