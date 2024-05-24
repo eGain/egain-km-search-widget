@@ -20,12 +20,12 @@ The eGain-KM-Search-Field-Widget boosts user experience by providing quick acces
 1. Clone this repository to your local machine:
 
     ```bash
-    git clone https://github.com/eGainDev/V3-Km-Widget.git
+    git clone https://github.com/eGain/egain-km-search-widget.git
     ```
 2. Navigate to the project directory:
 
     ```bash
-    cd V3-Km-Widget
+    cd egain-km-search-widget
     ```
 3. Install the required Node modules listed in the `package.json` file by moving to widget folder and run the following command:
 
