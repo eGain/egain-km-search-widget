@@ -1,0 +1,291 @@
+/* Default values and declarations for variable CSS */
+
+:root {
+  --eg-modal-width: 40%;
+  --eg-branding-color: #0A5380;
+  --eg-header-footer-text-color: #fff;
+  --eg-header-font: 'Arial';
+  --eg-header-font-size: 18px;
+}
+
+/* Add this CSS to your styles.css file or within a <style> tag in your HTML file */
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('https://fonts.gstatic.com/s/sourcesanspro/v22/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Glypha';
+  src: url('https://s3.amazonaws.com/ps.projects/fannie_mae/Fonts/Glypha/GlyphaLTW04-55Roman.ttf') format('truetype');
+}
+
+.eg-widget-open {
+  cursor: pointer;
+  position: fixed;
+  z-index: 9999;
+  bottom: 0px;
+  color: var(--eg-header-footer-text-color);
+  padding: 5px 100px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: none;
+  background: var(--eg-branding-color);
+  display: block;
+  font-family: var(--eg-header-font);
+  font-size: var(--eg-header-font-size);
+  background-color: #0a4aaa;
+  font-weight: 700;
+}
+
+.eg-widget-open.left {
+  left: 20px;
+}
+
+.eg-widget-open.right {
+  right: 20px;
+}
+
+.eg-widget-modal {
+  position: fixed;
+  top: 0;
+  width: var(--eg-modal-width);
+  height: 100%;
+  background-color: none;
+  display: none;
+  z-index: 1001;
+  overflow-y: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  display: block;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.20);
+  /* border: 1px solid #f2f2f2; */
+  border-radius: 5px;
+  padding-left: 3px;
+}
+
+.eg-widget-modal .eg-expand {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1001;
+  overflow-y: auto;
+  /* Enable vertical scrolling when the content overflows the modal */
+  padding-left: 0px;
+  padding-right: 0px;
+  color: rgba(0, 0, 0, 0.66);
+}
+
+.eg-widget-modal .eg-collapse {
+  position: fixed;
+  top: 0;
+  width: var(--eg-modal-width);
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1001;
+  overflow-y: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.eg-widget-modal .modal-content {
+  background-color: #fff;
+  height: 100%;
+  border-radius: 0;
+  /* border-left: 1px solid var(--eg-branding-color);
+  border-right: 1px solid var(--eg-branding-color); */
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: .3rem;
+  outline: 0;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.20);
+}
+
+
+.eg-widget-modal .eg-widget-header {
+  position: relative;
+  font-size: var(--eg-header-font-size);
+  align-items: center;
+  /* justify-content: center; */
+  display: flex;
+  color: #FFF;
+  font-family: var(--eg-header-font);
+  height: 80px;
+  font-weight: bold;
+  background-color: #0a4aaa;
+  padding-left: 11px;
+}
+
+.eg-widget-modal .eg-widget-header .eg-header-icons {
+  position: absolute;
+  right: 25px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 15%;
+}
+
+/* Other styling */
+
+.eg-widget-modal .knowledge-search-title {
+  max-width: calc(100% - 70px);
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: var(--eg-header-footer-text-color);
+  background-color: #0a4aaa;
+  font-family: var(--eg-header-font);
+  height: 80px;
+  font-weight: bold;
+  /* color: rgba(0,0,0,0.6); */
+
+}
+
+/* Positioning */
+
+.eg-widget-modal #toggle-modal-position {
+  border: none;
+  background-color: transparent;
+}
+
+.eg-widget-modal #toggle-modal-position .arrow {
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.eg-widget-modal #toggle-modal-position .right {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.eg-widget-modal #toggle-modal-position .left {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.eg-widget-modal .eg-widget-header .eg-header-icons .eg-modal-close {
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+}
+
+.eg-widget-modal .eg-widget-header .eg-header-icons .eg-modal-toggle {
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+}
+
+.eg-widget-modal.left {
+  left: 0;
+  right: auto;
+}
+
+.eg-widget-modal.right {
+  left: auto;
+  right: 0;
+}
+
+.eg-widget-modal.left #toggle-modal-position {
+  left: calc(var(--eg-modal-width) - 45px);
+}
+
+.eg-widget-modal.right #toggle-modal-position {
+  right: calc(var(--eg-modal-width) - 45px);
+}
+
+.eg-widget-modal.left .footer {
+  left: 0;
+  right: auto;
+}
+
+.eg-widget-modal.right .footer {
+  left: auto;
+  right: 0;
+}
+
+.eg-widget-modal.left.eg-collapse .eGain-article-share-dropdown-position {
+  left: calc(var(--eg-modal-width) - 40px);
+}
+
+.eg-widget-modal.left.eg-expand .eGain-article-share-dropdown-position {
+  left: calc(100% - 40px);
+}
+
+.eg-widget-modal.right .eGain-article-share-dropdown-position {
+  right: 10px;
+}
+
+.eg-widget-modal.left .eGain-article-container .eGain-article-Body {
+  left: 1px;
+}
+
+.eg-widget-modal.right .eGain-article-container .eGain-article-Body {
+  right: 1px;
+}
+
+.eg-widget-modal.left .eg-accordion .eg-accordion-header .eg-accordion-button:not(.collapsed) {
+  left: 1px;
+}
+
+.eg-widget-modal.right .eg-accordion .eg-accordion-header .eg-accordion-button:not(.collapsed) {
+  right: 1px;
+}
+
+.eg-widget-modal.left .eg-accordion .eg-accordion-collapse.collapse {
+  left: 1px;
+}
+
+.eg-widget-modal.right .eg-accordion .eg-accordion-collapse.collapse {
+  right: 1px;
+}
+
+.eg-widget-modal.left .eg-accordion .eg-accordion-collapse.collapsing {
+  left: 1px;
+}
+
+.eg-widget-modal.right .eg-accordion .eg-accordion-collapse.collapsing {
+  right: 1px;
+}
+
+/* Collapse/Expand */
+
+.eg-widget-modal .eg-collapse .eg-accordion .eg-accordion-header .eg-accordion-button:not(.collapsed) {
+  width: calc(var(--eg-modal-width) - 2px);
+}
+
+.eg-widget-modal .eg-expand .eg-accordion .eg-accordion-header .eg-accordion-button:not(.collapsed) {
+  width: calc(100% - 2px);
+}
+
+.eg-widget-modal .eg-collapse .eGain-article-container .eGain-article-Body {
+  width: calc(var(--eg-modal-width) - 2px);
+}
+
+.eg-widget-modal .eg-expand .eGain-article-container .eGain-article-Body {
+  width: calc(100% - 2px);
+}
+
+.eg-widget-modal .eg-collapse .eg-accordion .eg-accordion-collapse.collapse {
+  width: calc(var(--eg-modal-width) - 2px);
+}
+
+.eg-widget-modal .eg-expend .eg-accordion .eg-accordion-collapse.collapse {
+  width: calc(100% - 2px);
+}
+
+.eg-widget-modal .eg-collapse .eg-accordion .eg-accordion-collapse.collapsing {
+  width: calc(var(--eg-modal-width) - 2px);
+}
+
+.eg-widget-modal .eg-expend .eg-accordion .eg-accordion-collapse.collapsing {
+  width: calc(100% - 2px);
+}

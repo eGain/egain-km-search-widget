@@ -1,0 +1,62 @@
+
+  { 
+        "textOptions": {
+        "modalOpenLabel": "Ask eGain",
+        
+        "placeholderText": "Ask eGain",
+        
+        "headerTitle": "eGain Knowledge"
+        
+        },
+        "linkOptions":{
+        "surveyLink": "https://www.egain.com/contact-us/"
+        },
+        
+        "styleOptions": {
+        "maxListSize": 5,
+        
+        "modalPosition": "left",
+        
+        "modalWidth": "40%",
+        
+        "modalBackgroundColor": "#F2F2F2",
+        
+        "brandingColor": "#CB6015",
+        
+        "headerFooterTextColor": "#fff",
+        
+        "mainBackgroundColor": "#fff",
+        
+        "mainTextColor": "#000",
+        
+        "articleFooterLinkColor": "#ADADAD",
+        
+        "mainFont": "Source Sans Pro",
+        
+        "mainFontSize": "14px",
+        
+        "headerFont": "Arial",
+        
+        "headerFontSize": "18px"
+        
+        },
+        
+        "footerItems": [     
+        {
+        "fieldName": "Call",
+        
+        "fieldType": "call",
+        
+        "href": "https://www.egain.com/contact-us/"
+        },
+        
+        {
+        "fieldName": "Email",
+        
+        "fieldType": "email",
+        
+        "href": "mailto:support@egain.com"
+        }
+        
+        ]
+}

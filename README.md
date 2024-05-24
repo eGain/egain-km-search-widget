@@ -1,138 +1,135 @@
-# eGain-KM-Search-Widget
+## eGain-KM-Search-Widget
 
-The Search Widget renders an unordered list in an HTML page based on an initialization search string parameter. The list is a result of articles which matches the search parameter from eGain knowledge base. The article results list can also be updated dynamically by calling a javascript function with a corresponding search parameter.
+The eGain-KM-Search-Field-Widget boosts user experience by providing quick access to popular content and relevant information through an efficient search-driven approach. It eliminates the need for site navigation and decreases bounce rates. The widget is built using eGain Dev central V3 APIs, with an optimized user interface for easy use.
 
+## Prerequisites
 
-![search-widget](https://user-images.githubusercontent.com/83938216/117610210-f804ec80-b17e-11eb-92d7-ff9aa85213f9.png)
+   * Required for both Authenticated and Non-Authenticated user types (In eGain Terminology - Agent and Anonymous Respectively)
+      - eGain Domain Hint.
+      - eGain Knowledge Base Portal ID.
 
+   * Additional requirements for Authenticated user
+     - Obtain the necessary Agent Login Credentials for accessing eGain.
+     - Determine the Redirect Uri - (your web page url where the eGain widget is to be integrated).
+     - Access the eGain Administration console and navigate to the partition settings.
+     - Follow the guide [Create Client App](https://help.egain.com/mergedProjects/administration/creating_client_applications.htm) to configure a client application. Ensure that Knowledge read and manage scopes are enabled in the delegated settings.
+     - Enable CORS for **your webserver domain** in the eGain application by following the provided instructions [here](https://help.egain.com/mergedProjects/administration/cors_enable.htm). For more information about CORS refer to CORS eGain APIs in [this](https://help.egain.com/mergedProjects/administration/cors_about.htm) guide.
 
-# Prerequisites
-1. eGain system url with context root.
-2. eGain knowledge base portal id 
-3. Enable CORS in the eGain application. This is required in order to make the web service APIs work without CORS issues. Follow section "Enabling Cross-Origin Resource Sharing" of the product guide "eGain Administrator’s Guide to Administration Console".
+## Installation and Usage
+- To get started, ensure you have Node.js and npm installed on your machine.
+1. Clone this repository to your local machine:
 
-# Using The Search Widget
-This sample application uses search widget to fetch the corresponding articles from eGain knowledge using the short description. Initially search will be done using pre populated short description. Search results will be updated dynamically as we change the short description.
+    ```bash
+    git clone https://github.com/eGainDev/V3-Km-Widget.git
+    ```
+2. Navigate to the project directory:
 
-1. Clone or download the Sample Application from git hub repository https://github.com/snehaldatar/eGain-KM-Search-Widget.
-1. Change below attributes as required in the index html file.
-    1. your_egain_system_url_with-context_root
-    1. your_kb_portal_id
-1. Now you should be able to fetch the search results from your eGain knowledge portal by loading the index html in browser.
+    ```bash
+    cd V3-Km-Widget
+    ```
+3. Install the required Node modules listed in the `package.json` file by moving to widget folder and run the following command:
 
+    ```bash
+    cd widget
+    npm install
+    ```
 
-# Configurations
-This widget can be configured in the customer's HTML page which can be rendered as desired (dynamically or page load). There is no restriction on combination of widgets i.e., the widgets can be combined with each other in any order in the page.
+- This command will download and install all the dependencies needed for the project.
 
-Each widget follows a pattern in which the attributes of the placeholder HTML element can be configured.
-
-## Widget Library
-The library provides a global object "eGainUI" to invoke the functions. It also loads a name-spaced version of JQuery. The name of the JQuery object is same "eGainUI" such that it will not conflict with any other JQuery library customers may have.
-
-The library must be included in the page(s) that are going to enable eGainUI Widgets. The recommendation is to deploy this reference in a global header or footer so the widgets can be deployed dynamically to any page without further site modifications.
-
-Recommendation:
-* Please use it in the header: If the JavaScript library is being used by making a javascript function call.
-* Please use it in the footer: If the page/document load event is used to trigger the widget.
-
-Script tag to be added to load the eGain JavaScript library is -
-
-```JavaScript
-<script type="text/javascript" src="//your_egain_system_url_with-context_root/widgets/libs/egain-ui-2.0.0.min.js"></script>
-```
-
-
-## Adding Widget to the Page
-Once the JavaScript reference to the library is complete, the placeholder HTML elements for widget can simply be added to the page. 
-
-For e.g., the following HTML placeholder DIV will render an unordered list of knowledge articles for the corresponding portal with the search term of "test"
-
-
-```html
-<div id="HTML-element-Id"
-    data-egain-role="search-widget"
-    data-egain-search-param="test"
-    data-egain-portal-id="portal_id"
-    data-egain-host="//your-eGain-domain.com/system_context_root/"
-    data-egain-template-name="silver"
-    data-egain-locale="en-US">
-</div>
-```
-
-The API to call it dynamically is as follows:
-```
-<script>
-    $(document).ready(function () {
-        eGainUI('#HTML-element-Id').SearchWidget("search-term", function () {
-            //Code to be executed once the widget is successfully loaded
-        });
-    });
-</script>
-```
+4. Copy the widget folder from the repo and place it **As Is** in your web server.
+5. Use the generated URL referring to **egain-km-widget** file as an attribute value for **src** in step 4 as mentioned in the script tag.
+6. Use the below script tag to add the widget to the web page where the widget is to be loaded, following the recommended placement:
+    - Please use it in the header: If the JavaScript library is being used by making a javascript function call.
+    - Please use it in the footer: If the page/document load event is used to trigger the widget.
+    ## Anonymous
+   
+     ```JavaScript
+        <script type="text/javascript" src="https://your_webserver_domain/widget/egain-km-widget.js"
+        id="egain-widget-script" data-widget-domain="your_webserver_domain" data-portal-id="your_kb_portal_id" data-egain-locale="en-US" data-egain-template-name="silver" data-egain-domain-hint="your_domain_hint" data-egain-user-type="customer"></script>
+     ```
+   ## Agent
+  
+      ```JavaScript
+         <script type="text/javascript" src="https://your_webserver_domain/widget/egain-km-widget.js"
+         id="egain-widget-script" data-widget-domain="your_webserver_domain" data-portal-id="your_kb_portal_id" data-egain-locale="en-US" data-egain-template-name="silver" data-egain-domain-hint="your_domain_hint" data-egain-client-id="your_client_Id" data-egain-region="your_client_app_region" data-egain-redirect-uri="your_redirect_uri" data-egain-user-type="agent"></script>
+    ```
+5. Update the attributes within the script tag as follows to customize and load the HTML page to utilize the search widget functionalities:
+   * Required for both Agent and Anonymous user type
+      - `your_domain_hint`
+      - `your_kb_portal_id`
+      - `your_webserver_domain`
+   * Agent
+      - `Your_client_id`
+      - `your_redirect_uri`
+      - `your_client_app_region`
+7. The widget will be loaded as a button with the title "Ask eGain" at the bottom of the web page.
 
 ## Placeholder HTML Element Attributes
 
 |Attribute Name | Description | Type | Value | Default | Required |
 |---------------|-------------|------|-------|---------|----------|
-|data-egain-host |eGain server name. It is being used to call the eGain web-service APIs on this server.|	String	| E.g., //widget.egain.com/system/ |	NONE |	Yes |
-|data-egain-template-name|Template of the widget for display. It may be used to control the look and feel of the widget.|	String|	E.g., kiwi |	kiwi |	No |
-|data-egain-link-target | The target window to be used to open the link. |	String	| Should be same as target attribute of the HTML Anchor element. For e.g. _blank or _self etc. |	As default set by browser. |	No
-|data-egain-locale | The locale of the knowledge data.|	String| Format "languagecode-CountryCode". For e.g., "en-US". Should match with the MLKB language. | en-US|	No|
-|data-egain-portal-id | Id of the Portal created through eGain KB console (confirm this with eGain deployment team). | Numeric	| E.g., 201700000001000	| NONE	| Yes|
-|data-egain-search-param | The term that should be searched in the articles corresponding to the portal Id provided. | String | Eg. Sample | None | Yes
+|data-egain-domain-hint |eGain server name. It is used to call the eGain V3 API's on this server.|	String	| E.g. domain.egain.com |	NONE |	Yes |
+|data-widget-domain/your_webserver_domain |server domain name where the widget is deployed|	String	| E.g. NONE |	NONE |	Yes |
+|data-egain-region | eGain Deployment Region | string	| E.g EMEA/US	| US	| Yes|
+|data-egain-client-id | client Id generated when client app is created on eGain | string	| E.g e8448ea7-009d-4287-85b5-9b01ce0ef62c	| NONE	| Yes|
+|data-egain-template-name|Template of the widget for display. It may be used to control the look and feel of the widget.|	String|	E.g. silver |	silver |	No |
+|data-egain-locale | The locale of the knowledge data.|	String| Format "languagecode-CountryCode". E.g. "en-US". Should match with the MLKB language. | en-US|	No|
+|data-egain-portal-id | Id of the Portal created through eGain KB console (confirm this with eGain deployment team). | Numeric	| E.g. 1000000000000	| NONE	| Yes|
+|data-egain-user-type | The type of the user based on authorization. If the user is authenticated then the user type will be "agent" else it is "customer"| string	| agent/customer	| customer	| Yes|
 
-
-## Styling the output
-The library will automatically add eGain-specific CSS classes to each of the elements rendered. It also allows the customer to control the look & feel of the widget through customer specific CSS.
-
-```css
-/*
- * This CSS class is added to H1 element rendered
- */
-.eGain-Search-Results-h1 {
-    /* Add your styles here */
-}
+## Features
   
-/*
- * This CSS class is added to each UL element rendered
- */
-.eGain-Search-Results-Ul {
-    /* Add your styles here */
-}
+- The click of a button reveals a search tab, popular articles, and contact channels.
+    
+   ![image](https://github.com/eGainDev/V3-Km-Widget/assets/159126503/3345bb06-5f30-4297-9887-3274d0079612)
+
+- Real-time suggestions appear on the search tab after entering at least 2 characters. 
   
-/*
- * This CSS class is added to each LI element rendered in the list
- */
-.eGain-Search-Results-Li {
-    /* Add your styles here */
-}
-  
-/*
- * This CSS Class is added to each anchor tag
- */
-.eGain-Search-Results-A {
-    /* Add your styles here */
-}
-```
+   ![image](https://github.com/eGainDev/V3-Km-Widget/assets/159126503/0bc5e5c5-5302-4449-9d29-569268e49d7e)
 
-By providing the definitions to the above CSS classes that is referenced from the page where the widget is being rendered, the non-formatted or non-styled output can be formatted or styled to suit the customer's branding easily. 
+- The article offers options for rating and feedback via a survey and sharing capabilities through link copying or email.
 
-## L10N and Callback support:
-By default the widget will be loaded with en-US locale and same will be passed to the WS-APIs. In order to fetch the MLKB content update the "data-egain-locale" attribute to fetch the content in desired locale. However the labels and headings will still be in English language. Hence in order to change the labels to the desired language and text callbacks must be used. Callbacks can be registered both for static and dynamically widget.
+  ![email and rating](https://github.com/eGainDev/V3-Km-Widget/assets/159126503/93f1bde7-1c51-48af-8f9f-b20d0db0ba44)
 
-# Callback in static widget: 
-The callback handler must be bound at the end of the page (where static widget is embedded) in a script section. Following is the sample code for registering callback and updating the heading in the callback:
+## L10N Support
 
-## Callback for static widgets
-```
-eGainUI('#HTML-element-Id').on("eGainUI.callback", function () {
-    eGainUI('#HTML-element-Id h1').html("Search Widget - Static");
-});
-```
-## Callback in dynamic widgets: 
-The callback handler must be registered when triggering the dynamic widget. Following is the sample code for registering callback and updating the heading in the callback:
-```
-eGainUI('#HTML-element-Id').SearchWidget("account", function () {
-    eGainUI('#HTML-element-Id h1').html("Search Widget - Dynamic");
-});
-```
+By default, the widget will be loaded with en-US locale and the same will be passed to the V3 APIs.
+
+## CSS Customization (Optional)
+
+- The library will automatically add eGain-specific styling to each of the elements rendered. It also allows to customize the look & feel of the widget through customer-specific CSS placing the JSON in the URL
+`https://your_widget/widget/configuration.json`
+- Please refer to the configuration.json file in this repository under the widget folder for reference.
+    - Fields of the configuration file
+      - maxListSize - The maximum number of popular articles and the search results that the widget will load.
+      - modalPosition - The position of the widget to appear on the website.
+      - footerItems -  change the default href values for all the footer items that enable contact options.
+      - styleOptions - The default font, color, size, and width can be changed to get the desired output.
+      - linkOptions - The survey link is placed at the footer section of the article for feedback.
+
+## Brief Over View of V3 APIs Used
+
+Using V3 APIs simplifies the process of widget development by offering clear-cut tools and procedures. These APIs serve as fundamental components that developers can leverage to craft various features for widgets. 
+APIs Used in Widget Development
+
+ - **[Get Article By Id](https://apidev.egain.com/api-catalog/knowledge-portalmgr/api-bundled/operation/getArticleById/)**
+   - This API allows you to retrieve a specific article using the portal ID and article ID. It is useful for displaying detailed information about a particular article.
+ - **[Get Popular Articles](https://apidev.egain.com/api-catalog/knowledge-portalmgr/api-bundled/operation/getpopulararticles/)**
+   - The Get Popular Articles API fetches trending and frequently accessed articles. This is beneficial for showcasing content that is currently in demand on the website.
+- **[Multi-Search](https://apidev.egain.com/api-catalog/knowledge-portalmgr/api-bundled/operation/search/)**
+   - The Multi-Search API enables you to perform search operations on articles, topics, and external/internal websites. It is versatile and powerful for comprehensive search functionality.
+- **[Typeahead Suggestion](https://apidev.egain.com/api-catalog/knowledge-portalmgr/api-bundled/operation/typeaheadSuggestion/)**
+   - Integrate the Typeahead Suggestion API for predictive search suggestions. This enhances the user experience by providing real-time suggestions as users type their queries. The user should at least enter 2 characters for the API to respond.
+- **[Rate an Article](https://apidev.egain.com/api-catalog/knowledge-portalmgr/api-bundled/operation/rateArticle/)**
+   - This API provides users with the capability to give ratings to an article, offering a valuable feedback mechanism.
+
+## Additional Information
+
+- If you encounter any issues during installation or while running the project, please raise an issue on the GitHub repository.
+
+- For more information about Node.js and npm, visit their official websites:
+
+  - [Node.js](https://nodejs.org/)
+  - [npm](https://www.npmjs.com/)
+
+- For more information about V3 APIs , refer [V3 API Guide](https://apidev.egain.com/api-catalog/knowledge-portalmgr/api-bundled/overview/)
